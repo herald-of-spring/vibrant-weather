@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/d07fe58864.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="./assets/style.css" />
+  <title>Vibrant Weather</title>
+</head>
+<body>
+  <!-- background image -->
+  <div class="hero position-fixed"></div>
+  <!-- date and greeting header -->
+  <h1 class="display-4 pt-3 text-light d-flex flex-column justify-content-center align-items-center">
+    <b id="day"></b>
+    <b id="time"></b>
+  </h1>
+  <!-- search bar -->
+  <form id="search" class="d-flex justify-content-center mx-auto mt-5 w-50">
+    <input class="border border-primary col-5 rounded-left bg-white o-80" placeholder="Los Angeles, CA, US"></input>
+    <button class="border border-primary col-1 rounded-right bg-white o-80"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </form>
+  <div class="text-center text-light mb-3">
+    <div id="error-msg" class="d-none">Sorry, no results found. Please try again.</div>
+  </div>
+  <!-- recent searches div -->
+  <div id="recents-visibility" class="d-none">
+    <h3 class="text-center text-light">Recent Searches</h3>
+    <div id="recents-content" class="d-flex justify-content-center align-itmes-start flex-wrap m-auto text-light"></div>
+  </div>
+  <!-- result panels -->
+  <div id="result-visibility" class="d-none">
+    <h3 class="text-center text-light">5-Day Forecast for <span id="place-name"></span></h3>
+    <div id="result-content" class="d-flex justify-content-center m-auto text-light w-50">
+      <div class="border border-dark day-panel simple-animate p-1 d-flex flex-column justify-content-between align-items-center bi-sun">
+        <div>Jul 27</div>
+        <i class="fa-solid fa-droplet"> 50%</i>
+        <div>
+          <i class="fa-solid fa-caret-up d-block"> 80</i>
+          <i class="fa-solid fa-caret-down"> 60</i>
+        </div>
+        <div>Sunny</div>
+        <i class="fa-solid fa-sun"></i>
+      </div>
+      <div class="border border-dark day-panel p-1 d-flex flex-column justify-content-between align-items-center bi-sun">
+      </div>
+      <div class="day-panel p-1"></div>
+      <div class="day-panel p-1"></div>
+      <div class="day-panel p-1"></div>
+    </div>
+  </div>
+  <!-- alternative city options -->
+  <div id="alternatives" class="col-md-2">Not what you're looking for?</div>
+  <!-- 200-299 -->
+  <i class="fa-solid fa-cloud-bolt"></i>
+  <!-- 300-599 -->
+  <i class="fa-solid fa-cloud-showers-heavy"></i>
+  <!-- 800 -->
+  <i class="fa-solid fa-sun"></i>
+  <!-- 803,804 -->
+  <i class="fa-solid fa-cloud"></i>
+  <!-- 701-762 -->
+  <i class="fa-solid fa-smog"></i>
+  <!-- 771 -->
+  <i class="fa-solid fa-wind"></i>
+  <!-- 801,802 -->
+  <i class="fa-solid fa-cloud-sun"></i>
+  <!-- 600-699 -->
+  <i class="fa-solid fa-snowflake"></i>
+  <!-- 781 -->
+  <i class="fa-solid fa-tornado"></i>
+  <i class="fa-solid fa-caret-up"></i>
+  <i class="fa-solid fa-caret-down"></i>
+  <i class="fa-solid fa-droplet"></i>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script type="text/javascript" src="./assets/script.js"></script>
+
+</html>
