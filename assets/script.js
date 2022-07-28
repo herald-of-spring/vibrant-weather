@@ -1,4 +1,3 @@
-// var api = "api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&units=" + units + "&cnt=5appid=f10dee4e5f98ef01270eea76982c3d06";
 console.log(moment.unix(1569002733).format("MMM Do, YYYY, hh:mm:ss"));
 var hour = moment().format("HH");
 //set up hero banner depending on time of day
@@ -41,7 +40,7 @@ function displayLocation(site, loc, lat, lon) {
         lon: $(this).attr("data-lon"),
       });
       loadRecent();
-      // buildPanels($(this).attr("data-lat"), $(this).attr("data-lon"));
+      buildPanels($(this).attr("data-lat"), $(this).attr("data-lon"));
     })
   );
 }
@@ -65,7 +64,12 @@ function saveRecent(location) {
 }
 
 //fetch api using query as location name
+var units = "metric";
 function performSearch(query) {
+  units = document.activeElement['value'];
+  if (units != "imperial" && units != "metric") {
+    units = "metric";    //default units
+  }
   var api = "http://api.openweathermap.org/geo/1.0/direct?q=" + query + "&limit=4&appid=f10dee4e5f98ef01270eea76982c3d06";
   fetch(api).then(function (response) {
     if (response.status == 200) {
@@ -74,8 +78,7 @@ function performSearch(query) {
     else {
       return null;
     }
-  })
-  .then(function (data) {
+  }).then(function (data) {
     if (data != null && data.length > 0) {
       $("#day").attr("class", "d-none");
       $("#time").attr("class", "d-none");
@@ -92,7 +95,7 @@ function performSearch(query) {
         lon: data[0].lon,
       });
       loadRecent();
-      // buildPanels(data);
+      buildPanels(data[0].lat, data[0].lon);
       displayAlternates(data);
     }
     else {
@@ -101,8 +104,24 @@ function performSearch(query) {
   });
 }
 
-function buildPanels(data) {
-
+function buildPanels(lat, lon) {
+  var api = "https://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&units=" + units + "&cnt=5&appid=f10dee4e5f98ef01270eea76982c3d06";
+  fetch(api, {
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    }
+  }).then(function (response) {
+    if (response.status == 200) {
+      return response.json();
+    }
+    else {
+      return null;
+    }
+  }).then(function (data) {
+    if (data != null && data.length > 0) {
+      console.log(data);
+    }
+  });
 }
 
 function displayAlternates(data) {
