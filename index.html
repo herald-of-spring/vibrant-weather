@@ -23,7 +23,7 @@
     <button class="border border-primary col-1 rounded-right bg-white o-80"><i class="fa-solid fa-magnifying-glass"></i></button>
   </form>
   <div class="text-center text-light mb-3">
-    <div id="error-msg" class="d-none">Sorry, no results found. Please try again.</div>
+    <h4 id="error-msg" class="d-none">Sorry, no results found. Please try again.</h4>
   </div>
   <!-- recent searches div -->
   <div id="recents-visibility" class="d-none">
@@ -52,7 +52,10 @@
     </div>
   </div>
   <!-- alternative city options -->
-  <div id="alternatives" class="col-md-2">Not what you're looking for?</div>
+  <div id="alternates-visibility" class="d-none">
+    <h3 class="text-center text-light">Not what you're looking for?</h3>
+    <div id="alternates-content" class="d-flex justify-content-center align-itmes-start flex-wrap m-auto text-light"></div>
+  </div>
   <!-- 200-299 -->
   <i class="fa-solid fa-cloud-bolt"></i>
   <!-- 300-599 -->
