@@ -13,12 +13,12 @@
   <!-- background image -->
   <div class="hero position-fixed"></div>
   <!-- date and greeting header -->
-  <h1 class="display-4 pt-3 text-light d-flex flex-column justify-content-center align-items-center">
+  <h1 class="display-4 pt-2 text-light d-flex flex-column justify-content-center align-items-center">
     <b id="day"></b>
     <b id="time"></b>
   </h1>
   <!-- search bar -->
-  <form id="search" class="d-flex justify-content-center mx-auto mt-5 w-50">
+  <form id="search" class="d-flex justify-content-center mx-auto mt-3 w-50">
     <input class="border border-primary col-6 rounded bg-white o-80 mr-4" placeholder="Los Angeles, CA, US"></input>
     <button value="metric" class="border border-primary col-1 rounded-left bg-white o-80">°C</button>
     <button value="imperial" class="border border-primary col-1 rounded-right bg-white o-80">°F</button>
@@ -32,52 +32,15 @@
     <div id="recents-content" class="d-flex justify-content-center align-itmes-start flex-wrap m-auto text-light"></div>
   </div>
   <!-- result panels -->
-  <div id="result-visibility" class="d-none">
+  <div id="result-visibility">
     <h3 class="text-center text-light">5-Day Forecast for <span id="place-name"></span></h3>
-    <div id="result-content" class="d-flex justify-content-center m-auto text-light w-50">
-      <div class="border border-dark day-panel simple-animate p-1 d-flex flex-column justify-content-between align-items-center bi-sun">
-        <div>Jul 27</div>
-        <i class="fa-solid fa-droplet"> 50%</i>
-        <div>
-          <i class="fa-solid fa-caret-up d-block"> 80</i>
-          <i class="fa-solid fa-caret-down"> 60</i>
-        </div>
-        <div>Sunny</div>
-        <i class="fa-solid fa-sun"></i>
-      </div>
-      <div class="border border-dark day-panel p-1 d-flex flex-column justify-content-between align-items-center bi-sun">
-      </div>
-      <div class="day-panel p-1"></div>
-      <div class="day-panel p-1"></div>
-      <div class="day-panel p-1"></div>
-    </div>
+    <div id="result-content" class="d-flex justify-content-center m-auto text-dark w-50"></div>
   </div>
   <!-- alternative city options -->
   <div id="alternates-visibility" class="d-none">
     <h3 class="text-center text-light">Not what you're looking for?</h3>
     <div id="alternates-content" class="d-flex justify-content-center align-itmes-start flex-wrap m-auto text-light"></div>
   </div>
-  <!-- 200-299 -->
-  <i class="fa-solid fa-cloud-bolt"></i>
-  <!-- 300-599 -->
-  <i class="fa-solid fa-cloud-showers-heavy"></i>
-  <!-- 800 -->
-  <i class="fa-solid fa-sun"></i>
-  <!-- 803,804 -->
-  <i class="fa-solid fa-cloud"></i>
-  <!-- 701-762 -->
-  <i class="fa-solid fa-smog"></i>
-  <!-- 771 -->
-  <i class="fa-solid fa-wind"></i>
-  <!-- 801,802 -->
-  <i class="fa-solid fa-cloud-sun"></i>
-  <!-- 600-699 -->
-  <i class="fa-solid fa-snowflake"></i>
-  <!-- 781 -->
-  <i class="fa-solid fa-tornado"></i>
-  <i class="fa-solid fa-caret-up"></i>
-  <i class="fa-solid fa-caret-down"></i>
-  <i class="fa-solid fa-droplet"></i>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -21,7 +21,7 @@ function loadRecent() {
   recent = JSON.parse(localStorage.getItem("recent"));
   if (recent != null) {
     $("#recents-visibility").attr("class", "d-block");
-    $("#recents-content").text("");
+    $("#recents-content").empty();
     for (place of recent) {
       displayLocation($("#recents-content"), place.loc, place.lat, place.lon);
     }
@@ -80,10 +80,6 @@ function performSearch(query) {
     }
   }).then(function (data) {
     if (data != null && data.length > 0) {
-      $("#day").attr("class", "d-none");
-      $("#time").attr("class", "d-none");
-      $("#error-msg").attr("class", "d-none");
-      $("#result-visibility").attr("class", "d-block");
       var place = data[0].name;
       if (data[0].state != undefined) {
         place += ", " + data[0].state;
@@ -104,6 +100,7 @@ function performSearch(query) {
   });
 }
 
+//fetch weather information using converted lat and lon
 function buildPanels(lat, lon) {
   var api = "https://api.openweathermap.org/data/2.5/forecast/daily?lat=" + lat + "&lon=" + lon + "&units=" + units + "&cnt=5&appid=f10dee4e5f98ef01270eea76982c3d06";
   fetch(api, {
@@ -119,15 +116,89 @@ function buildPanels(lat, lon) {
     }
   }).then(function (data) {
     if (data != null && data.length > 0) {
-      console.log(data);
+      $("#day").attr("class", "d-none");
+      $("#time").attr("class", "d-none");
+      $("#error-msg").attr("class", "d-none");
+      $("#result-visibility").attr("class", "d-block");
+      $("#place-name").text(recent[0].loc);
+      $("#result-content").empty();
+      for (i in data.list) {
+        $("#result-content").append(newPanel(i, data.list[i].pop, data.list[i].temp.max, data.list[i].temp.min, data.list[i].weather.description, data.list[i].weather.id));
+      }
     }
   });
 }
 
+//main builder for the panels
+function newPanel(day, precip, max, min, weather, id) {
+  var icon = $("<i>");
+  var background = "";
+  var temp = "°C";
+  if (units == "imperial") {
+    temp = "°F";
+  }
+  if (id < 300) {
+    icon.addClass("fa-solid fa-cloud-bolt");
+    background = "b-cloud-bolt";
+  }
+  else if (id < 600) {
+    icon.addClass("fa-solid fa-cloud-showers-heavy");
+    background = "b-cloud-showers-heavy";
+  }
+  else if (id < 700) {
+    icon.addClass("fa-solid fa-snowflake");
+    background = "b-snowflake";
+  }
+  else if (id < 763) {
+    icon.addClass("fa-solid fa-smog");
+    background = "b-smog";
+  }
+  else if (id == 771) {
+    icon.addClass("fa-solid fa-wind");
+    background = "b-wind";
+  }
+  else if (id == 781) {
+    icon.addClass("fa-solid fa-tornado");
+    background = "b-tornado";
+  }
+  else if (id == 800) {
+    icon.addClass("fa-solid fa-sun");
+    background = "b-sun";
+  }
+  else if (id == 801 || id == 802) {
+    icon.addClass("fa-solid fa-cloud-sun");
+    background = "b-cloud-sun";
+  }
+  else if (id == 803 || id == 804) {
+    icon.addClass("fa-solid fa-cloud");
+    background = "b-cloud";
+  }
+  return $("<div>").addClass("border border-dark day-panel simple-animate p-1 d-flex flex-column justify-content-between align-items-center " + background).append(
+    $("<strong>").text(day + " days from today")).append(
+    $("<i>").addClass("fa-solid fa-droplet").text(" " + Math.floor(parseInt(precip) * 100) + "%").fadeOut(0)).append(
+    $("<div>").append(
+      $("<i>").addClass("fa-solid fa-caret-up d-block").text(" " + max + temp)).append(
+      $("<i>").addClass("fa-solid fa-caret-down").text(" " + min + temp))).append(
+    $("<strong>").text(weather).fadeOut(0)).append(
+    icon
+  );
+  // <div class="border border-dark day-panel simple-animate p-1 d-flex flex-column justify-content-between align-items-center bi-sun">
+  //       <div>Jul 27</div>
+  //       <i class="fa-solid fa-droplet"> 50%</i>
+  //       <div>
+  //         <i class="fa-solid fa-caret-up d-block"> 80</i>
+  //         <i class="fa-solid fa-caret-down"> 60</i>
+  //       </div>
+  //       <div>Sunny</div>
+  //       <i class="fa-solid fa-sun"></i>
+  //     </div>
+}
+
+//for cities with the same search names but in different places
 function displayAlternates(data) {
   if (data.length > 1) {
     $("#alternates-visibility").attr("class", "d-block");
-    $("#alternates-content").text("");
+    $("#alternates-content").empty();
     for (i = 1; i < data.length; i++) {
       var place = data[i].name;
       if (data[i].state != undefined) {

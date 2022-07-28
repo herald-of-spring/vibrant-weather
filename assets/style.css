@@ -24,8 +24,40 @@
   height: 200px;
 }
 
-.bi-sun {
-  background-image: url("../images/morning.jpg")
+.b-cloud-bolt {
+  background-image: url("../images/cloud-bolt.jpg")
+}
+
+.b-cloud-showers-heavy {
+  background-image: url("../images/cloud-showers-heavy.jpg")
+}
+
+.b-snowflake {
+  background-image: url("../images/snowflake.jpg")
+}
+
+.b-smog {
+  background-image: url("../images/smog.jpg")
+}
+
+.b-wind {
+  background-image: url("../images/wind.jpg")
+}
+
+.b-tornado {
+  background-image: url("../images/tornado.jpg")
+}
+
+.b-sun {
+  background-image: url("../images/sun.jpg");
+}
+
+.b-cloud-sun {
+  background-image: url("../images/cloud-sun.jpg")
+}
+
+.b-cloud {
+  background-image: url("../images/cloud.jpg")
 }
 
 .simple-animate {
