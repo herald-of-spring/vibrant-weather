@@ -76,7 +76,7 @@ function performSearch(query) {
   if (query == "") {
     return;
   }
-  var api = "http://api.openweathermap.org/geo/1.0/direct?q=" + query + "&limit=4&appid=f10dee4e5f98ef01270eea76982c3d06";
+  var api = "https://api.openweathermap.org/geo/1.0/direct?q=" + query + "&limit=4&appid=f10dee4e5f98ef01270eea76982c3d06";
   fetch(api).then(function (response) {
     if (response.status == 200) {
       return response.json();
@@ -108,7 +108,7 @@ function performSearch(query) {
 
 //fetch weather information using converted lat and lon
 function buildPanels(lat, lon) {
-  var api = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=" + units + "&cnt=40&appid=f10dee4e5f98ef01270eea76982c3d06";
+  var api = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=" + units + "&cnt=40&appid=f10dee4e5f98ef01270eea76982c3d06";
   fetch(api).then(function (response) {
     if (response.status == 200) {
       return response.json();
