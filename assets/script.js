@@ -1,4 +1,3 @@
-console.log(moment.unix(1569002733).format("MMM Do, YYYY, hh:mm:ss"));
 var hour = moment().format("HH");
 var h = "";
 //set up hero banner depending on time of day
@@ -128,14 +127,11 @@ function buildPanels(lat, lon) {
       var localMax = -1;
       var localMin = 1000;
       var avgpop = 0;
-      console.log(data.list);
       for (i in data.list) {
         localMax = Math.max(localMax, data.list[i].main.temp_max);
         localMin = Math.min(localMin, data.list[i].main.temp_min);
         avgpop += data.list[i].pop;
-        console.log(i);
-        if (i % 8 == 7) {
-          console.log("in here")
+        if (i % 8 == 7) {    //3 hour intervals so triggers every 8 loops aka 24 hours
           $("#result-content").append(newPanel(i / 8, avgpop / 8, localMax, localMin, data.list[i].weather[0].main, data.list[i].weather[0].id));
           localMax = -1;
           localMin = 1000;
