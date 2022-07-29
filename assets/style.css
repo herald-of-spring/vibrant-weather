@@ -11,17 +11,36 @@
   opacity: 0.8;
 }
 
-.purple-fit {
+.btn-fit {
   width: fit-content;
   height: fit-content;
   cursor: pointer;
+}
+
+.morning {
   background-color: blueviolet;
+}
+
+.afternoon {
+  background-color: darkorange;
+}
+
+.evening {
+  background-color: dodgerblue;
 }
 
 .day-panel {
   font-size: 16px;
   width: 20%;
   height: 200px;
+}
+
+.day-panel:hover {
+  width: 22%;
+}
+
+.day-panel:hover .show-on-hover {
+  opacity: 1;
 }
 
 .b-cloud-bolt {
@@ -66,5 +85,9 @@
 
 .simple-animate:hover {
   opacity: 1;
-  font-size: 120%;
+  font-size: 110%;
+}
+
+.show-on-hover {
+  opacity: 0;
 }
